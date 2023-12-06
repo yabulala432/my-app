@@ -1,29 +1,35 @@
 import {
-  View,
-  TextInput,
-  StyleSheet,
-  TouchableOpacity,
   Platform,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-interface AppTextInputProps {
-  icon: any;
+interface props {
+  icon?: any;
   rightIcon?: any;
   onPressRightIcon?: any;
-  [x: string]: any;
+  onChangeText?: any;
+  placeholder?: string;
 }
 
 function AppTextInput({
   icon,
   rightIcon,
   onPressRightIcon,
-  ...otherProps
-}: AppTextInputProps) {
+  onChangeText,
+  placeholder,
+}: props) {
   return (
     <View style={styles.textInputContainer}>
       <MaterialCommunityIcons name={icon} size={25} color={"#6e6969"} />
-      <TextInput style={styles.textInput} {...otherProps} />
+      <TextInput
+        style={styles.textInput}
+        placeholder={placeholder}
+        onChangeText={onChangeText}
+      />
       {rightIcon && (
         <TouchableOpacity style={styles.rightIcon} onPress={onPressRightIcon}>
           <MaterialCommunityIcons
