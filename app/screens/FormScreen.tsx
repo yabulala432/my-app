@@ -1,16 +1,16 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 
 import { Formik } from "formik";
 
-import AppTextInput from "../components/AppTextInput";
 import AppButton from "../components/AppButton";
+import AppTextInput from "../components/AppTextInput";
 import ImageInput from "../components/ImageInput";
+import AppText from "../components/AppText";
 
 function FormScreen() {
   return (
-    <>
-      <ImageInput />
+    <ScrollView>
       <View style={styles.container}>
         <Formik
           initialValues={{ title: "", price: "", description: "" }}
@@ -25,13 +25,27 @@ function FormScreen() {
                   onChangeText={handleChange("title")}
                   placeholder={"title"}
                 />
+                <View style={styles.row}>
+                  <AppText children={"Amharic Image : "} />
+                  <ImageInput />
+                </View>
+
+                <View style={styles.row}>
+                  <AppText children={"Geez Image : "} />
+                  <ImageInput />
+                </View>
+
                 <AppTextInput
                   onChangeText={handleChange("price")}
-                  placeholder={"price"}
+                  placeholder={"audio"}
                 />
                 <AppTextInput
                   onChangeText={handleChange("description")}
                   placeholder={"description"}
+                  numberOfLines={5}
+                  textAlignVertical={"top"}
+                  textBreakStrategy={"highQuality"}
+                  underlineColorAndroid={"transparent"}
                 />
               </View>
               <AppButton title={"Submit"} onPress={handleSubmit} />
@@ -39,7 +53,7 @@ function FormScreen() {
           )}
         </Formik>
       </View>
-    </>
+    </ScrollView>
   );
 }
 
@@ -49,6 +63,11 @@ const styles = StyleSheet.create({
   },
   inputFields: {
     marginBottom: 50,
+  },
+  row: {
+    backgroundColor: "#ebdbb2",
+    padding: 10,
+    borderRadius: 10,
   },
 });
 export default FormScreen;

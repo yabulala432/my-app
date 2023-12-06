@@ -1,12 +1,10 @@
-import { StyleSheet, View } from "react-native";
-import ImageInput from "./app/components/ImageInput";
+import { StyleSheet, TextInput, View } from "react-native";
 import FormScreen from "./app/screens/FormScreen";
-import AppImageSelector from "./app/components/AppImageSelector";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <ImageInput />
+      <FormScreen />
     </View>
   );
 }
